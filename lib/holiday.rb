@@ -17,22 +17,33 @@ def second_supply_for_fourth_of_july(holiday_hash)
   #     :memorial_day => ["BBQ"]
   #   }
   # }
-  # return the second element in the 4th of July array
+holiday_supplies[:summer][:fourth_of_july][1]  # return the second element in the 4th of July array
 end
 
 def add_supply_to_winter_holidays(holiday_hash, supply)
   # holiday_hash is identical to the one above
   # add the second argument, which is a supply, to BOTH the
   # Christmas AND the New Year's arrays
-
+holiday_supplies[:winter][:christmas] << "Balloons"
+holiday_supplies[:winter][:new_years] << "Balloons"
+holiday_supplies
 end
 
 
 def add_supply_to_memorial_day(holiday_hash, supply)
   # again, holiday_hash is the same as the ones above
   # add the second argument to the memorial day array
-
+holiday_hash.each do |season, supplies_hash|
+  if season == :spring
+    supplies_hash.each do |holiday, data|
+      if holiday == :memorial_day
+        data << "Grill"
+      end
+    end
+  end
 end
+end
+
 
 def add_new_holiday_with_supplies(holiday_hash, season, holiday_name, supply_array)
   # code here
@@ -61,10 +72,3 @@ def all_holidays_with_bbq(holiday_hash)
   # include the string "BBQ"
 
 end
-
-
-
-
-
-
-
